@@ -14,7 +14,7 @@ def valuetocolor(valuestr, tol=0, mul=999):
     digit = [0, 0, 0]
     dec = 0
     i = 0
-    for x in valuestr:
+    for x in valuestr.lstrip('0'):
         if x.isdigit():
             if i < 3:
                 digit[i] = int(x)
