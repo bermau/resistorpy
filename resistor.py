@@ -39,8 +39,3 @@ def valuetocolor(valuestr, tol=0, mul=999):
         colors = [color[digit[0]], color[digit[1]], color[digit[2]],
         color[multiplier]]
     return colors
-
-
-while True:
-    valuestr = raw_input(">")
-    print valuetocolor(valuestr, tol=0)
