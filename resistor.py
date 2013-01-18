@@ -34,8 +34,8 @@ def valuetocolor(valuestr, tol=0, mul=999):
     multiplier = mul + dec - tol
     multiplier = -2 if multiplier == -3 else multiplier
     if tol == 0:
-        colors = [color[digit[0]], color[digit[1]], color[multiplier]]
+        ret = {"band1": color[digit[0]], "band2": color[digit[1]], "band3": color[multiplier]}
     else:
-        colors = [color[digit[0]], color[digit[1]], color[digit[2]],
-        color[multiplier]]
-    return colors
+        ret = {"band1": color[digit[0]], "band2": color[digit[1]], "band3": color[digit[2]],
+        "band4": color[multiplier]}
+    return ret
