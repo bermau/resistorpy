@@ -1,4 +1,4 @@
-def valuetocolor(valuestr, tol=0, mul=999):
+def getcolor(value):
     color = {-2: "silver",
             -1: "gold",
             0: "black",
@@ -11,6 +11,10 @@ def valuetocolor(valuestr, tol=0, mul=999):
             7: "violet",
             8: "grey",
             9: "white"}
+    return color[value]
+
+
+def valuetocolor(valuestr, tol=0, mul=999):
     digit = [0, 0, 0]
     dec = 0
     i = 0
@@ -34,8 +38,8 @@ def valuetocolor(valuestr, tol=0, mul=999):
     multiplier = mul + dec - tol
     multiplier = -2 if multiplier == -3 else multiplier
     if tol == 0:
-        ret = {"band1": color[digit[0]], "band2": color[digit[1]], "band3": color[multiplier]}
+        ret = {"band1": getcolor(digit[0]), "band2": getcolor(digit[1]), "band3": getcolor(multiplier)}
     else:
-        ret = {"band1": color[digit[0]], "band2": color[digit[1]], "band3": color[digit[2]],
-        "band4": color[multiplier]}
+        ret = {"band1": getcolor(digit[0]), "band2": getcolor(digit[1]), "band3": getcolor(digit[2]),
+        "band4": getcolor(multiplier)}
     return ret
