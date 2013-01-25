@@ -44,7 +44,7 @@ def tolcolor(tol):
 
 def valuetocolor(valuestr, tol=5, mul=None):
     digit = [0, 0, 0]
-    dec = 0
+    dec = -1
     noofdigit = 0 if int(tol) > 2 else 1
     i = 0
     dot_mul_re = re.compile("^[0-9]*\.[0-9]+[kKmMrR]$")
@@ -66,15 +66,17 @@ def valuetocolor(valuestr, tol=5, mul=None):
         elif mul is None:
             if (x == 'r' or x == 'R' or x == '.'):
                 mul = 0
-                dec = i
             elif (x == 'k' or x == 'k'):
                 mul = 3
-                dec = i
             elif (x == 'm' or x == 'M'):
                 mul = 6
-                dec = i
+            dec = i
 
-    mul = i if mul is None else mul
+    if dec == -1:
+        dec = i
+        if mul == None:
+            mul = 0
+
     multiplier = mul + dec - noofdigit - 2
     multiplier = -2 if multiplier == -3 else multiplier
 
